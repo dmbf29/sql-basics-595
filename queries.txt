@@ -1,0 +1,73 @@
+SELECT first_name, last_name FROM patients
+
+SELECT column FROM table_name
+
+SELECT * FROM patients
+
+* everything
+
+SELECT age FROM patients WHERE age = 21
+
+
+SELECT * FROM doctors WHERE specialty LIKE '%Surgery'
+
+'%Surgery' % allows things to be before it
+
+'Surgery%' % allows things to be after it
+
+'%Surgery%' % allows things to be before and after it
+
+
+SELECT * FROM doctors
+WHERE specialty = 'Cardiac Surgery'
+AND first_name = 'Steve'
+
+SELECT * FROM patients ORDER BY age DESC
+SELECT * FROM table ORDER BY column ASC
+
+
+SELECT COUNT(*) FROM doctors
+
+SELECT COUNT(*) FROM doctors WHERE specialty = 'Cardiac Surgery'
+
+SELECT COUNT(*), specialty
+FROM doctors
+GROUP BY specialty
+
+[[5, 'dentistry'], [1 'Cardiac Surgery']]
+
+SELECT first_name FROM doctors
+WHERE specialty = 'dentistry'
+
+
+SELECT COUNT(*) AS c, specialty
+FROM doctors
+GROUP BY specialty
+ORDER BY c DESC;
+
+AS assigning a nickname/variable
+
+
+-- QUESTION: GIVE ME ALL THE INHABITANTS FROM PARIS
+SELECT * FROM inhabitants
+JOIN cities ON cities.id = inhabitants.city_id
+WHERE cities.name = 'Paris'
+
+SELECT * FROM table_name
+JOIN table_name ON table_name.primary_id = table_name.foreign_id
+WHERE table_name.column = 'Paris'
+
+-- QUESTION: GIVE ME ALL THE ADULTS LIVING IN PARIS
+SELECT * FROM inhabitants i
+JOIN cities c ON c.id = i.city_id
+WHERE i.age >= 18 AND c.name = 'Paris'
+
+-- QUESTION: FOR EACH CONSULTATION, GIVE ME ITS DATE, PATIENT AND DOCTOR NAMES
+SELECT date, p.first_name, p.last_name, d.first_name, d.last_name
+FROM patients p
+JOIN consultations c ON p.id = c.patient_id
+JOIN doctors d ON d.id = c.doctor_id
+
+
+
+
